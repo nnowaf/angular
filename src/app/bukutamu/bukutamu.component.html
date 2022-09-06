@@ -1,1 +1,99 @@
-<p>bukutamu works!</p>
+<form [formGroup]="formKontak">
+    <div class="row mb-3">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Nama</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" formControlName="nama">
+        <span *ngIf="!formKontak.get('nama')?.valid && formKontak.get('nama')?.touched"
+        class="pesan-error">
+            <span *ngIf="!formKontak.get('nama')?.valid && formKontak.get('nama')?.errors?.['required']">
+                *Wajib diisi
+            </span>
+            <span *ngIf="!formKontak.get('nama')?.valid && formKontak.get('nama')?.errors?.['minlength']">
+                Minimal 3 karakter
+            </span> 
+        </span>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Alamat</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" formControlName="alamat">
+        <span *ngIf="!formKontak.get('alamat')?.valid && formKontak.get('alamat')?.touched"
+        class="pesan-error"> *Wajib diisi </span>
+      </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" formControlName="email">
+          <span *ngIf="!formKontak.get('email')?.valid && formKontak.get('email')?.touched"
+          class="pesan-error"> 
+            <span *ngIf="!formKontak.get('email')?.valid && formKontak.get('email')?.errors?.['email']">
+                Format Email Salah
+            </span>
+            <span *ngIf="!formKontak.get('email')?.valid && formKontak.get('email')?.errors?.['required']">
+                *Wajib diisi
+            </span>
+          </span>
+          
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Nomor Telepon</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" formControlName="notelp">
+          <span *ngIf="!formKontak.get('notelp')?.valid && formKontak.get('notelp')?.touched"
+          class="pesan-error"> *Wajib diisi </span>
+        </div>
+    </div>
+
+    <fieldset class="row mb-3">
+        <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="gridRadios1" value="1" formControlName="radio">
+            <label class="form-check-label" for="gridRadios1">
+              First radio
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="gridRadios2" value="2" formControlName="radio">
+            <label class="form-check-label" for="gridRadios2">
+              Second radio
+            </label>
+          </div>
+          <div class="form-check disabled">
+            <input class="form-check-input" type="radio" id="gridRadios3" value="3" formControlName="radio">
+            <label class="form-check-label" for="gridRadios3">
+              Third disabled radio
+            </label>
+          </div>
+        </div>
+    </fieldset>
+
+    <fieldset class="row mb-3">
+        <legend class="col-form-label col-sm-2 pt-0">Check Box</legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox"  value="check1" formArrayName="checkbox">
+            <label class="form-check-label" for="gridRadios1">
+              First radio
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox"  value="check2" formArrayName="checkbox">
+            <label class="form-check-label" for="gridRadios2">
+              Second radio
+            </label>
+          </div>
+          <div class="form-check disabled">
+            <input class="form-check-input" type="checkbox"  value="check3" formArrayName="checkbox">
+            <label class="form-check-label" for="gridRadios3">
+              Third disabled radio
+            </label>
+          </div>
+        </div>
+    </fieldset>
+
+    <button (click)="simpan()" type="submit" class="btn btn-primary">Sign in</button>
+  </form>

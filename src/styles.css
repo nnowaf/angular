@@ -10,6 +10,15 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+span.pesan-error{
+  color: red;
+}
+
+input.ng-invalid{
+  /*border: 1px solid red; */
+}
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
