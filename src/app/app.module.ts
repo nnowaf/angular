@@ -9,6 +9,8 @@ import { BukutamuComponent } from './bukutamu/bukutamu.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { TableComponent } from './table/table.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
     PlainlayoutComponent,
     BukutamuComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    TableComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
