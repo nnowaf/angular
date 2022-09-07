@@ -11,7 +11,7 @@ import { BukutamuService } from '../shared/bukutamu.service';
 export class BukutamuComponent implements OnInit {
   formKontak!: FormGroup;
   constructor(private formBuild: FormBuilder, private btService: BukutamuService) { }
-  
+  cekboxVal!: Array<any>;
 
   ngOnInit(): void {
     this.formKontak = this.formBuild.group({
@@ -21,9 +21,9 @@ export class BukutamuComponent implements OnInit {
       "notelp" : new FormControl(null, Validators.required),
       "radio" : new FormControl(null, Validators.required),
       "checkbox" : new FormArray([
-        new FormControl(1),
-        new FormControl(2),
         new FormControl(3),
+        new FormControl(4),
+        new FormControl(5),
       ]),
     })
   }
@@ -36,10 +36,17 @@ export class BukutamuComponent implements OnInit {
     bukuTamu.email = this.formKontak.controls['email'].value;
     bukuTamu.notelp = this.formKontak.controls['notelp'].value;
     bukuTamu.radio = this.formKontak.controls['radio'].value;
-    bukuTamu.checkbox = this.formKontak.controls['checkbox'].value;
+    bukuTamu.checkbox = this.cekboxVal;
     console.log(this.formKontak.controls['checkbox'].value);
     this.btService.simpanBuku(bukuTamu);
 
+  }
+
+  getVal(even: any) {
+    if(even.target.checked) {
+      this.cekboxVal.push(even.target.value);
+    }
+   
   }
 
 }

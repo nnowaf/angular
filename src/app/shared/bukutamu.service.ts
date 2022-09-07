@@ -10,7 +10,7 @@ export class BukutamuService {
 
   simpanBuku(bukuTamu: BukuTamu): string {
     console.log("==========DARI SERVICE===============");
-    console.log(bukuTamu.checkbox);
+    console.log(bukuTamu);
     console.log("=========================");
     return "sukses";
   }

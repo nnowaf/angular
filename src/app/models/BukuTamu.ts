@@ -4,5 +4,5 @@ export class BukuTamu {
     email!: string;
     notelp!: string;
     radio!: string;
-    checkbox!: string;
+    checkbox!: Array<any>;
 }
