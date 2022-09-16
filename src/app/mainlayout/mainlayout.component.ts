@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-mainlayout',
@@ -6,12 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mainlayout.component.css']
 })
 export class MainlayoutComponent implements OnInit {
+  title = 'bootcamp';
+  isLogin: boolean = false;
 
-  constructor() { }
+  constructor(private authService: AuthService, private route:Router) { }
+
   tampilHilang : string = "display:none;";
 
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getAuth();
   }
 
   bukaTutup(): void {
@@ -40,4 +46,19 @@ export class MainlayoutComponent implements OnInit {
       }
     }
   } 
+
+  login() {
+    this.authService.login();
+    this.getAuth();
+  }
+
+  getAuth() {
+    this.isLogin = this.authService.isAuthenticated();
+  }
+
+  logout() {
+    this.authService.logout();
+    this.getAuth();
+    this.route.navigate(['home']);
+  }
 }

@@ -1,0 +1,21 @@
+<p></p>
+<div class="row">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAMA</th>
+                <th>KATEGORI</th>
+                <th>KETERANGAN</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let lk of listKategori">
+                <td>{{lk.katId}}</td>
+                <td>{{lk.katName}}</td>
+                <td>{{lk.deptId}}</td>
+                <td>{{lk.desc}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
