@@ -13,6 +13,7 @@ import { ListprodukComponent } from './listproduk/listproduk.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ListkategoriComponent } from './listkategori/listkategori.component';
 import { DataComponent } from './data/data.component';
+import { DepartmentComponent } from './department/department.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DataComponent } from './data/data.component';
     AboutComponent,
     ListprodukComponent,
     ListkategoriComponent,
-    DataComponent
+    DataComponent,
+    DepartmentComponent
   ],
   imports: [
     BrowserModule,

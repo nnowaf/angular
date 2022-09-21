@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { GuardGuard } from './auth/guard.guard';
 import { DataComponent } from './data/data.component';
+import { DepartmentComponent } from './department/department.component';
 import { HomeComponent } from './home/home.component';
 import { ListkategoriComponent } from './listkategori/listkategori.component';
 import { ListprodukComponent } from './listproduk/listproduk.component';
@@ -29,6 +30,10 @@ const routes: Routes = [
       {
         component : HomeComponent,
         path : 'home'
+      },
+      {
+        component : DepartmentComponent,
+        path : 'dpm'
       }
     ],
     component: MainlayoutComponent

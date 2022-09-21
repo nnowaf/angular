@@ -50,6 +50,7 @@ export class MainlayoutComponent implements OnInit {
   login() {
     this.authService.login();
     this.getAuth();
+    this.route.navigate(['data']);
   }
 
   getAuth() {
@@ -59,6 +60,6 @@ export class MainlayoutComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.getAuth();
-    this.route.navigate(['home']);
+    this.route.navigate(['']);
   }
 }

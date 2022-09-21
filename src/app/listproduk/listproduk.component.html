@@ -1,3 +1,27 @@
+<div class="card-body">
+    <div class="row">
+        <div class="card-body">
+            <form [formGroup]="formCari" (submit)="getCariKategori()">
+                <div class="form-floating mb-3">
+                    <input class="form-control" placeholder="nama kategori" formControlName="nama"/>
+                    <label>Nama Kategori</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select class="form-control form-select" formControlName="dpdown">
+                        <option *ngFor="let item of listDepartment" [value]="item.depTDID">
+                            {{item.depName}}
+                        </option>
+                    </select>
+                </div>
+                <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                    <button class="btn btn-primary" type="submit">
+                        cari
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <p></p>
 <div class="row">
     <table class="table table-bordered">
@@ -10,7 +34,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let lk of listKategori">
+            <tr *ngFor="let lk of listKategori | paginate: {
+                itemsPerPage: hal.size,
+                currentPage: hal.pagenumber,
+                totalItems: hal.total}">
                 <td>{{lk.katId}}</td>
                 <td>{{lk.katName}}</td>
                 <td>{{lk.deptId}}</td>
@@ -18,4 +45,14 @@
             </tr>
         </tbody>
     </table>
+    <pagination-controls class="pagination pagination-sm float-sm-end"(pageChange)="pageChangeEvent($event)"></pagination-controls>
+</div>
+<div class="col-md-8">
+    <form [formGroup]="formPage">
+        <select formControlName="size" (change)="sizeChangeEvent()">
+            <option *ngFor="let item of jumlahPerPage" [value]="item">
+                {{item}}
+            </option>
+        </select>
+    </form>
 </div>
