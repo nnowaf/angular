@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Department } from '../models/kategorimodel/Kategori';
 import { DepartmentService } from '../shared/department.service';
 
 @Component({
@@ -10,27 +12,55 @@ import { DepartmentService } from '../shared/department.service';
 export class DepartmentComponent implements OnInit {
   formInput!: FormGroup
 
-  constructor(private depServ: DepartmentService, private formBuild: FormBuilder) { }
+  constructor(
+    private depServ: DepartmentService, 
+    private formBuild: FormBuilder,
+    private actRoute: ActivatedRoute) {
+      this.formInput = this.formBuild.group(
+        {
+          'depName' : this.formBuild.control(null, [Validators.required, Validators.minLength(3)]),
+          'descDep' : this.formBuild.control(null, Validators.required)
+        }
+      )
+    }
 
   ngOnInit(): void {
-    this.formInput = this.formBuild.group(
-      {
-        'depName' : this.formBuild.control(null),
-        'descDep' : this.formBuild.control(null)
-      }
-    )
+    let deptId = this.actRoute.snapshot.params['id'];
+
+    console.log(deptId)
+    if (deptId) {
+      this.depServ.getDeptById(deptId).subscribe(
+        {
+          next: (hasil) => {
+            this.formInput = this.formBuild.group(
+              {
+                'depName' : this.formBuild.control(hasil.depName, [Validators.required, Validators.minLength(3)]),
+                'descDep' : this.formBuild.control(hasil.descDep, Validators.required)
+              }
+            )
+          }
+        }
+      )
+    }
   }
 
   createDepartment() {
-    this.depServ.createDepartment(this.formInput.value).subscribe(
-      resp => {
-        if (resp.status == 200) {
-          alert('create sukses');
-        } else {
-          alert('create failed');
-        }
+    console.log(this.formInput)
+      if(this.formInput.valid) {
+        let dept = new Department()
+        dept.depName = this.formInput.controls['depName'].value
+        dept.descDep = this.formInput.controls['descDep'].value
+        this.depServ.createDepartment(dept).subscribe(
+          {
+            next: (hasil) => {
+              console.log(hasil)
+              alert("Simpan Berhasil")
+            }
+          }
+        )
+      } else {
+        alert("Form Wajib Diisi")
       }
-    )
   }
 
 }

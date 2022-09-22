@@ -5,6 +5,7 @@ import { GuardGuard } from './auth/guard.guard';
 import { DataComponent } from './data/data.component';
 import { DepartmentComponent } from './department/department.component';
 import { HomeComponent } from './home/home.component';
+import { ListdepartmentComponent } from './listdepartment/listdepartment.component';
 import { ListkategoriComponent } from './listkategori/listkategori.component';
 import { ListprodukComponent } from './listproduk/listproduk.component';
 import { MainlayoutComponent } from './mainlayout/mainlayout.component';
@@ -34,7 +35,16 @@ const routes: Routes = [
       {
         component : DepartmentComponent,
         path : 'dpm'
+      },
+      {
+        component:  DepartmentComponent,
+        path : 'dpm/:id'
+      },
+      {
+        component : ListdepartmentComponent,
+        path : 'dpmlist'
       }
+      
     ],
     component: MainlayoutComponent
   }

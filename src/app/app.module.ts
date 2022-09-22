@@ -14,6 +14,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ListkategoriComponent } from './listkategori/listkategori.component';
 import { DataComponent } from './data/data.component';
 import { DepartmentComponent } from './department/department.component';
+import { ListdepartmentComponent } from './listdepartment/listdepartment.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DepartmentComponent } from './department/department.component';
     ListprodukComponent,
     ListkategoriComponent,
     DataComponent,
-    DepartmentComponent
+    DepartmentComponent,
+    ListdepartmentComponent
   ],
   imports: [
     BrowserModule,
